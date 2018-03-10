@@ -16,17 +16,19 @@
                     <?php } ?>
                 </div>
             </div>
-            <div class="company-info row">
-                <h1 class="company-info_name"><?php the_field( 'company_name' ); ?></h1>
-                <h3 class="company-info_tagline"><?php the_field( 'tag_line' ); ?></h3>
-                <p class="company-info_about text"><?php the_field( 'about_company' ); ?></p>
-            </div>
             <div class="row">
+                <div class="company-info">
+                    <h1 class="company-info_name heading heading-main"><?php the_field( 'company_name' ); ?></h1>
+                    <h3 class="company-info_tagline heading heading-tagline"><?php the_field( 'tag_line' ); ?></h3>
+                    <p class="company-info_about text"><?php the_field( 'about_company' ); ?></p>
+                </div>
+            </div>
+            <div>
                   <?php 
                     $images = get_field('front_page_gallery');
                     
                     if( $images ): ?>
-                        <ul class="front-page-gallery">
+                        <ul class="front-page-gallery row">
                             <?php foreach( $images as $image ): ?>
                                 <li class="main-home_one-col">
                                          <img src="<?php echo $image['sizes']['large']; ?>" alt="<?php echo $image['alt']; ?>" />
@@ -40,9 +42,13 @@
 		<!-- /section -->
 		<section>
 		    <?php 
+		        $post_type = 'portfolio_item';
+		        $category_id = 2;
+	            $category_link = get_category_link( $category_id );
 		        $args = array(
-                    'post_type' => 'portfolio_item',
-                    'category_name' => 'latest-projects',
+                    'post_type' => $post_type,
+                    'category' => $category_id,
+                    'tag' => 'featured',
                 );
                 
                 $the_query = new WP_Query($args);
@@ -50,7 +56,6 @@
                 if($the_query->have_posts()): while($the_query->have_posts()):$the_query->the_post();
 
 		    ?>
-		    <h1 class="row"><?php the_field( 'title' ); ?></h1>
 		    <div class="featured_main row">
 		        <?php $featured_main = get_field( 'featured_main' ); ?>
                     <?php if ( $featured_main ) { ?>
@@ -58,8 +63,10 @@
                     <?php } ?>
 		    </div>
 		    <div class="row">
-		        <div class="main-home_one-col main-home_inset_to_right">
-        		    <p><?php the_field( 'description' ); ?></p>
+		        <div class="main-home_one-col main-home_inset_to_right featured-text">
+        		    <h1 class="heading heading-secondary">Latest Projects</h1>
+        		    <h3 class="heading heading-tagline"><?php the_title(); ?></h3>
+        		    <a class="seemore" href="<?php echo esc_url( $category_link ); ?>">See More</a>
     		    </div>
     		    <div class="main-home_one-col main-home_inset_right">
     		        <?php $featured_secondary = get_field( 'featured_secondary' ); ?>

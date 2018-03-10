@@ -87,6 +87,31 @@ input:focus {
 	font-size: 18px;
 	line-height: 32px;
 }
+
+.heading {
+	font-family: "Raleway", sans-serif;
+	font-weight: 300;
+}
+
+.heading-main {
+	font-size: 72px;
+	margin: 24px 0 0;
+}
+
+.heading-secondary {
+	font-size: 48px;
+	margin: 0 0 24px;
+}
+
+@media only screen and (max-width:950px) {
+	.heading-secondary {
+		font-size: 32px;
+	}
+}
+.heading-tagline { 
+	font-size: 24px;
+	margin: 0 0 32px
+}
 /*------------------------------------*\
     STRUCTURE
 \*------------------------------------*/
@@ -116,11 +141,11 @@ main, .sidebar {
 }
 
 main {
-	width: 70%;
+	width: 80%;
 }
 
 .sidebar {
-	width: 29%;
+	width: 19%;
 }
 
 /* grid layout */
@@ -129,15 +154,15 @@ main {
 	.wrapper {
 		display: -ms-grid;
 		display: grid;
-		-ms-grid-columns: 1fr 1fr 40px 1fr;
-		grid-template-columns: 1fr 1fr 40px 1fr;
+		-ms-grid-columns: 1fr 1fr 1fr 40px 1fr;
+		grid-template-columns: 1fr 1fr 1fr 40px 1fr;
 		-ms-grid-rows: auto;
 		grid-template-rows: auto;
 		grid-template-areas: 
-			"header header header header" 
-			"hero hero hero hero" 
-			"main main . sidebar" 
-			"footer footer footer footer";
+			"header header header header header" 
+			"hero hero hero hero hero" 
+			"main main main . sidebar" 
+			"footer footer footer footer footer";
 	}
 
 	.header {
@@ -280,20 +305,24 @@ main {
 \*------------------------------------*/
 
 /* home page layout */
-
+.main-home section {
+	margin-bottom: 80px;
+}
 .row {
 	width: 100%;
-	margin: 24px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .main-home_one-col {
-	width: 49%;
+	flex: 1 1 49%;
 	padding: 0 16px;
-	display: inline-block;
+	text-align: center;
 }
 
-.main-home_inset_right {
-	margin-top: -80px;
+.main-home_inset_right img {
+	margin-top: -160px;
 	margin-left: -40px;
 	border: 24px white solid;
 	padding: 0;
@@ -303,8 +332,8 @@ main {
 	padding-right: 40px;
 }
 
-.main-home_inset_left {
-	margin-top: -80px;
+.main-home_inset_left img{
+	margin-top: -160px;
 	margin-right: -40px;
 	border: 24px white solid;
 	padding: 0;
@@ -318,18 +347,22 @@ main {
 	text-align: center;
 }
 
-.company-info_name {
-	font-family: "Raleway", sans-serif;
-	font-size: 72px;
-	font-weight: 300;
-	margin: 24px 0 0;
+
+.front-page-gallery {
+	padding-left: 0;
+	list-style: none;
 }
 
-.company-info_tagline { 
+.featured-text {
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.seemore {
+	font-style: italic;
+	font-weight: 400;
 	font-family: "Raleway", sans-serif;
-	font-size: 32px;
-	font-weight: 100;
-	margin: 0 0 32px
+	color: rgb(150,150,150)
 }
 
 /*------------------------------------*\
