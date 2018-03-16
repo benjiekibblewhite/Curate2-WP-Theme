@@ -117,7 +117,7 @@ function html5blank_styles()
 {
     wp_register_style('html5blank', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('html5blank'); // Enqueue it!
-    
+
     wp_register_style('normalize', get_template_directory_uri() . '/normalize.css', array(), '1.0', 'all');
     wp_enqueue_style('normalize'); // Enqueue it!
 }
@@ -379,6 +379,413 @@ function html5blankcomments($comment, $args, $depth)
 	</div>
 	<?php endif; ?>
 <?php }
+
+// Add ACF
+
+// 1. customize ACF path
+add_filter('acf/settings/path', 'my_acf_settings_path');
+
+function my_acf_settings_path( $path ) {
+
+    // update path
+    $path = get_stylesheet_directory() . '/inc/acf';
+
+    // return
+    return $path;
+
+}
+
+
+// 2. customize ACF dir
+add_filter('acf/settings/dir', 'my_acf_settings_dir');
+
+function my_acf_settings_dir( $dir ) {
+
+    // update path
+    $dir = get_stylesheet_directory_uri() . '/inc/acf/';
+
+    // return
+    return $dir;
+
+}
+
+// // 3. Hide ACF field group menu item
+// add_filter('acf/settings/show_admin', '__return_false');
+
+// 4. Include ACF
+include_once( get_stylesheet_directory() . '/inc/acf/acf.php' );
+
+// 5. Add Field Groups
+if( function_exists('acf_add_local_field_group') ):
+    acf_add_local_field_group(array(
+        'key' => 'group_5aa3411f941e6',
+        'title' => 'Front Page',
+        'fields' => array(
+            array(
+                'key' => 'field_5aa3426e44f92',
+                'label' => 'Hero Image',
+                'name' => 'hero_image',
+                'type' => 'image',
+                'instructions' => '',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'return_format' => 'url',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+                'min_width' => '',
+                'min_height' => '',
+                'min_size' => '',
+                'max_width' => '',
+                'max_height' => '',
+                'max_size' => '',
+                'mime_types' => '',
+            ),
+            array(
+                'key' => 'field_5aa34171c2d00',
+                'label' => 'Intro Text',
+                'name' => 'intro_text',
+                'type' => 'textarea',
+                'instructions' => '',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => '',
+                'new_lines' => '',
+            ),
+            array(
+                'key' => 'field_5aa34133c2cfe',
+                'label' => 'Headshot',
+                'name' => 'headshot',
+                'type' => 'image',
+                'instructions' => '',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'return_format' => 'url',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+                'min_width' => '',
+                'min_height' => '',
+                'min_size' => '',
+                'max_width' => '',
+                'max_height' => '',
+                'max_size' => '',
+                'mime_types' => '',
+            ),
+            array(
+                'key' => 'field_5aa34149c2cff',
+                'label' => 'Company Name',
+                'name' => 'company_name',
+                'type' => 'text',
+                'instructions' => '',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_5aa34333b195d',
+                'label' => 'Tag Line',
+                'name' => 'tag_line',
+                'type' => 'text',
+                'instructions' => '',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_5aa34190c2d01',
+                'label' => 'About Company',
+                'name' => 'about_company',
+                'type' => 'textarea',
+                'instructions' => '',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => '',
+                'new_lines' => '',
+            ),
+            array(
+                'key' => 'field_5aa341a5c2d02',
+                'label' => 'Front Page Gallery',
+                'name' => 'front_page_gallery',
+                'type' => 'gallery',
+                'instructions' => '',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'min' => '',
+                'max' => '',
+                'insert' => 'append',
+                'library' => 'all',
+                'min_width' => '',
+                'min_height' => '',
+                'min_size' => '',
+                'max_width' => '',
+                'max_height' => '',
+                'max_size' => '',
+                'mime_types' => '',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'page',
+                    'operator' => '==',
+                    'value' => '16',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => array(
+            0 => 'the_content',
+            1 => 'excerpt',
+        ),
+        'active' => 1,
+        'description' => '',
+    ));
+
+    acf_add_local_field_group(array(
+        'key' => 'group_5aa3376a37822',
+        'title' => 'Portfolio Item',
+        'fields' => array(
+            array(
+                'key' => 'field_5aa3379766925',
+                'label' => 'Gallery',
+                'name' => 'gallery',
+                'type' => 'gallery',
+                'instructions' => '',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'min' => 1,
+                'max' => '',
+                'insert' => 'append',
+                'library' => 'all',
+                'min_width' => '',
+                'min_height' => '',
+                'min_size' => '',
+                'max_width' => '',
+                'max_height' => '',
+                'max_size' => '',
+                'mime_types' => '',
+            ),
+            array(
+                'key' => 'field_5aa337af66926',
+                'label' => 'Description',
+                'name' => 'description',
+                'type' => 'textarea',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'default_value' => '',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => '',
+                'new_lines' => '',
+            ),
+            array(
+                'key' => 'field_5aa425fb7cdc4',
+                'label' => 'Main Featured Image',
+                'name' => 'featured_main',
+                'type' => 'image',
+                'instructions' => 'Choose one of your images to be the main featured image. This will be displayed as a large picture on the home page, if you select this post as a featured portfolio item. Wide images work best.',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'return_format' => 'array',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+                'min_width' => '',
+                'min_height' => '',
+                'min_size' => '',
+                'max_width' => '',
+                'max_height' => '',
+                'max_size' => '',
+                'mime_types' => '',
+            ),
+            array(
+                'key' => 'field_5aa426477cdc5',
+                'label' => 'Secondary Featured Image',
+                'name' => 'featured_secondary',
+                'type' => 'image',
+                'instructions' => 'Choose one of your images to be the secondary featured image. This will appear as a small, inset on the home page, if you select this post as a featured portfolio item. Tall images work best.',
+                'required' => 1,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'return_format' => 'array',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+                'min_width' => '',
+                'min_height' => '',
+                'min_size' => '',
+                'max_width' => '',
+                'max_height' => '',
+                'max_size' => '',
+                'mime_types' => '',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'portfolio_item',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'acf_after_title',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => array(
+            0 => 'the_content',
+        ),
+        'active' => 1,
+        'description' => '',
+    ));
+
+    endif;
+
+// register custom post types and taxonomies
+
+function cptui_register_my_cpts_portfolio_item() {
+
+	/**
+	 * Post Type: Portfolio Items.
+	 */
+
+	$labels = array(
+		"name" => __( "Portfolio Items", "" ),
+		"singular_name" => __( "Portoflio Item", "" ),
+		"menu_name" => __( "Portfolio Items", "" ),
+	);
+
+	$args = array(
+		"label" => __( "Portfolio Items", "" ),
+		"labels" => $labels,
+		"description" => "These are your individual portfolio items. Don\'t forget to give each one a category, so they will show up on the correct page. ",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"show_in_rest" => false,
+		"rest_base" => "",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "portfolio_item", "with_front" => true ),
+		"query_var" => true,
+		"supports" => array( "title", "editor", "thumbnail" ),
+		"taxonomies" => array( "post_tag", "portfolio_category" ),
+	);
+
+	register_post_type( "portfolio_item", $args );
+}
+
+add_action( 'init', 'cptui_register_my_cpts_portfolio_item' );
+
+
+function cptui_register_my_taxes_portfolio_category() {
+
+	/**
+	 * Taxonomy: Portfolio Categories.
+	 */
+
+	$labels = array(
+		"name" => __( "Portfolio Categories", "" ),
+		"singular_name" => __( "Portfolio Category", "" ),
+	);
+
+	$args = array(
+		"label" => __( "Portfolio Categories", "" ),
+		"labels" => $labels,
+		"public" => true,
+		"hierarchical" => false,
+		"label" => "Portfolio Categories",
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => array( 'slug' => 'portfolio_category', 'with_front' => true, ),
+		"show_admin_column" => false,
+		"show_in_rest" => false,
+		"rest_base" => "",
+		"show_in_quick_edit" => false,
+	);
+	register_taxonomy( "portfolio_category", array( "portfolio_item" ), $args );
+}
+
+add_action( 'init', 'cptui_register_my_taxes_portfolio_category' );
+
 
 /*------------------------------------*\
 	Actions + Filters + ShortCodes

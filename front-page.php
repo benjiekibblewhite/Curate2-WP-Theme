@@ -6,7 +6,7 @@
             <?php } ?>
 	    </section>
 	<main role="main" class="main-home">
-		<!-- section -->
+		<!-- front page intro section -->
 		<section class="main-home_intro">
 		    <div class="row">
                 <div class="greeting main-home_one-col"><p class="text"><?php the_field( 'intro_text' ); ?></p></div>
@@ -24,9 +24,9 @@
                 </div>
             </div>
             <div>
-                  <?php 
+                  <?php
                     $images = get_field('front_page_gallery');
-                    
+
                     if( $images ): ?>
                         <ul class="front-page-gallery row">
                             <?php foreach( $images as $image ): ?>
@@ -39,9 +39,10 @@
     		    <?php endwhile; endif; ?>
             </div>
 		</section>
-		<!-- /section -->
+        <!-- /section -->
+        <!-- latest projects -->
 		<section>
-		    <?php 
+		    <?php
 		        $post_type = 'portfolio_item';
 		        $category_id = 2;
 	            $category_link = get_category_link( $category_id );
@@ -50,9 +51,9 @@
                     'category' => $category_id,
                     'tag' => 'featured',
                 );
-                
+
                 $the_query = new WP_Query($args);
-                
+
                 if($the_query->have_posts()): while($the_query->have_posts()):$the_query->the_post();
 
 		    ?>
@@ -76,7 +77,11 @@
                 </div>
 		    </div>
 		    <?php endwhile; endif; ?>
-		</section>
+        </section>
+        <!-- /latest-projects -->
+        <!-- staging projects -->
+
+
 	</main>
 
 <?php get_sidebar(); ?>
