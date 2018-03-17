@@ -811,6 +811,16 @@ function cptui_register_my_cpts_portfolio_item() {
 
 add_action( 'init', 'cptui_register_my_cpts_portfolio_item' );
 
+// make sure portfolio items show in The Loop for category pages
+function custom_post_type_cat_filter($query) {
+    if ( !is_admin() && $query->is_main_query() ) {
+      if ($query->is_category()) {
+        $query->set( 'post_type', array( 'post', 'portfolio_item' ) );
+      }
+    }
+  }
+
+  add_action('pre_get_posts','custom_post_type_cat_filter');
 
 function cptui_register_my_taxes_portfolio_category() {
 

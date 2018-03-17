@@ -334,6 +334,10 @@ main {
 	padding-right: 40px;
 }
 
+.main-home_inset_left {
+	order: 1;
+}
+
 .main-home_inset_left img{
 	margin-top: -160px;
 	margin-right: -40px;
@@ -343,6 +347,7 @@ main {
 
 .main-home_inset_to_left {
 	padding-left: 40px;
+	order: 2;
 }
 
 .company-info {

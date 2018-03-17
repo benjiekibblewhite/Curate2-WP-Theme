@@ -42,21 +42,27 @@
         <!-- /section -->
         <!-- latest projects -->
 		<section>
-		    <?php
+            <?php
+                // captures user-selected categories from customizer settings, displays posts tagged as "featured"
                 $categories = explode(",",  get_theme_mod( 'front_page_categories' ));
+                // variable will alternate after each displayed post
+                $inset_picture_goes_on_left = true;
                 foreach($categories as $category_id) {
                     $post_type = 'portfolio_item';
                     $category_link = get_category_link( $category_id );
+                    $category_name = get_cat_name( $category_id );
                     $args = array(
                         'post_type' => $post_type,
-                        'category' => $category_id,
+                        'cat' => $category_id,
                         'tag' => 'featured',
                     );
                     $the_query = new WP_Query($args);
                     if($the_query->have_posts()): while($the_query->have_posts()):$the_query->the_post();
-                        get_template_part('partials/front_page_features');
+                        include( locate_template( 'partials/front_page_features.php', false, false ) );
+                        $inset_picture_goes_on_left = !$inset_picture_goes_on_left;
                     endwhile; endif;
-            }
+
+                }
             ?>
         </section>
 	</main>
