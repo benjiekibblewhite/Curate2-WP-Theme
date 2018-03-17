@@ -323,9 +323,67 @@ function register_email_customizer_setting($wp_customize) {
     ));
 }
 
+/**
+ * Adds multiple category selection support to the theme customizer via checkboxes
+ *
+ * The category IDs are saved in the database as a comma separated string.
+ */
+
+
+function register_front_page_categories_setting($wp_customize) {
+    class Front_Page_Category_Checkboxes_Control extends WP_Customize_Control {
+        public $type = 'category-checkboxes';
+
+        public function render_content() {
+
+            // Loads theme-customizer.js javascript file.
+            echo '<script src="' . get_template_directory_uri() . '/js/theme-customizer.js"></script>';
+
+            // Displays checkbox heading
+            echo '<span class="customize-control-title">' . esc_html( $this->label ) . '</span>';
+
+            // Displays category checkboxes.
+            foreach ( get_categories() as $category ) {
+                echo '<label><input type="checkbox" name="category-' . $category->term_id . '" id="category-' . $category->term_id . '" class="cstmzr-category-checkbox"> ' . $category->cat_name . '</label><br>';
+            }
+
+            // Loads the hidden input field that stores the saved category list.
+            ?><input type="hidden" id="<?php echo $this->id; ?>" class="cstmzr-hidden-categories" <?php $this->link(); ?> value="<?php echo sanitize_text_field( $this->value() ); ?>"><?php
+        }
+    }
+
+    $wp_customize->add_section(
+        'front_page_category_section',
+        array(
+            'title' => 'Categories to Show on Front Page',
+            'priority' => 35,
+        )
+    );
+
+    $wp_customize->add_setting( 'front_page_categories' );
+
+    $wp_customize->add_control(
+        new Front_Page_Category_Checkboxes_Control(
+            $wp_customize,
+            'front_page_categories',
+            array(
+                'label' => 'Categories',
+                'section' => 'front_page_category_section',
+                'settings' => 'front_page_categories'
+            )
+        )
+    );
+}
+
+
+
+add_action('customize_register', 'register_front_page_categories_setting');
 add_action('customize_register', 'register_logo_customizer_setting');
 add_action('customize_register', 'register_phonenumber_customizer_setting');
 add_action('customize_register', 'register_email_customizer_setting');
+
+
+
 // Threaded Comments
 function enable_threaded_comments()
 {
@@ -828,7 +886,7 @@ add_filter('the_category', 'remove_category_rel_from_category_list'); // Remove 
 add_filter('the_excerpt', 'shortcode_unautop'); // Remove auto <p> tags in Excerpt (Manual Excerpts only)
 add_filter('the_excerpt', 'do_shortcode'); // Allows Shortcodes to be executed in Excerpt (Manual Excerpts only)
 add_filter('excerpt_more', 'html5_blank_view_article'); // Add 'View Article' button instead of [...] for Excerpts
-add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
+// add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
 add_filter('style_loader_tag', 'html5_style_remove'); // Remove 'text/css' from enqueued stylesheet
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images

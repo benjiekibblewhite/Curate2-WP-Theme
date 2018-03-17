@@ -43,45 +43,22 @@
         <!-- latest projects -->
 		<section>
 		    <?php
-		        $post_type = 'portfolio_item';
-		        $category_id = 2;
-	            $category_link = get_category_link( $category_id );
-		        $args = array(
-                    'post_type' => $post_type,
-                    'category' => $category_id,
-                    'tag' => 'featured',
-                );
-
-                $the_query = new WP_Query($args);
-
-                if($the_query->have_posts()): while($the_query->have_posts()):$the_query->the_post();
-
-		    ?>
-		    <div class="featured_main row">
-		        <?php $featured_main = get_field( 'featured_main' ); ?>
-                    <?php if ( $featured_main ) { ?>
-                    	<img src="<?php echo $featured_main['url']; ?>" alt="<?php echo $featured_main['alt']; ?>" />
-                    <?php } ?>
-		    </div>
-		    <div class="row">
-		        <div class="main-home_one-col main-home_inset_to_right featured-text">
-        		    <h1 class="heading heading-secondary">Latest Projects</h1>
-        		    <h3 class="heading heading-tagline"><?php the_title(); ?></h3>
-        		    <a class="seemore" href="<?php echo esc_url( $category_link ); ?>">See More</a>
-    		    </div>
-    		    <div class="main-home_one-col main-home_inset_right">
-    		        <?php $featured_secondary = get_field( 'featured_secondary' ); ?>
-                        <?php if ( $featured_secondary ) { ?>
-                        	<img src="<?php echo $featured_secondary['url']; ?>" alt="<?php echo $featured_secondary['alt']; ?>" />
-                        <?php } ?>
-                </div>
-		    </div>
-		    <?php endwhile; endif; ?>
+                $categories = explode(",",  get_theme_mod( 'front_page_categories' ));
+                foreach($categories as $category_id) {
+                    $post_type = 'portfolio_item';
+                    $category_link = get_category_link( $category_id );
+                    $args = array(
+                        'post_type' => $post_type,
+                        'category' => $category_id,
+                        'tag' => 'featured',
+                    );
+                    $the_query = new WP_Query($args);
+                    if($the_query->have_posts()): while($the_query->have_posts()):$the_query->the_post();
+                        get_template_part('partials/front_page_features');
+                    endwhile; endif;
+            }
+            ?>
         </section>
-        <!-- /latest-projects -->
-        <!-- staging projects -->
-
-
 	</main>
 
 <?php get_sidebar(); ?>
