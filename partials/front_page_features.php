@@ -6,6 +6,7 @@
         $layout_class = "right";
     }
 ?>
+<h2 class="heading heading-secondary category_title"><?php echo $category_name ?></h2>
 <div class="featured_main row">
     <?php $featured_main = get_field( 'featured_main' ); ?>
         <?php if ( $featured_main ) { ?>
@@ -14,7 +15,6 @@
 </div>
 <div class="row">
     <div class="main-home_one-col main-home_inset_to_<?php echo $layout_class ?> featured-text">
-        <h1 class="heading heading-secondary"><?php echo $category_name ?></h1>
         <h3 class="heading heading-tagline"><?php the_title(); ?></h3>
         <a class="seemore" href="<?php echo esc_url( $category_link ); ?>">See More</a>
     </div>

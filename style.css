@@ -90,7 +90,7 @@ input:focus {
 
 .heading {
 	font-family: "Raleway", sans-serif;
-	font-weight: 300;
+	font-weight: 500;
 }
 
 .heading-main {
@@ -109,8 +109,8 @@ input:focus {
 	}
 }
 .heading-tagline {
-	font-size: 24px;
-	margin: 0 0 32px
+	font-size: 36px;
+	margin: 0 0 16px
 }
 /*------------------------------------*\
     STRUCTURE
@@ -352,6 +352,14 @@ main {
 
 .company-info {
 	text-align: center;
+}
+
+.main-home .category_title {
+	text-align: center;
+	width: 70%;
+	border-top: 2px solid rgb(219, 186, 18);
+	padding-top: 40px;
+	margin: 40px auto;
 }
 
 
