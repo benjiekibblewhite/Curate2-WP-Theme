@@ -91,6 +91,7 @@ input:focus {
 .heading {
 	font-family: "Raleway", sans-serif;
 	font-weight: 500;
+	color: #778;
 }
 
 .heading-main {
@@ -357,7 +358,7 @@ main {
 .main-home .category_title {
 	text-align: center;
 	width: 70%;
-	border-top: 2px solid rgb(219, 186, 18);
+	border-top: 2px solid #778;
 	padding-top: 40px;
 	margin: 40px auto;
 }
