@@ -15,6 +15,7 @@
 			<?php the_content(); // Dynamic Content ?>
             <p class="portfolio-single--description"><?php the_field( 'description' ); ?></p>
             <?php
+
                 $images = get_field('gallery');
                 $size = 'full'; // (thumbnail, medium, large, full or custom size)
 
@@ -22,8 +23,17 @@
                     <section class="portfolio-single--gallery">
                         <?php foreach( $images as $image ): ?>
                             <div class="portfolio-single--gallery__image">
-                                <img src="<?php echo $image['sizes']['large']; ?>" alt="<?php echo $image['alt']; ?>" />
-                             </div>
+                               <?php
+                                    $content .= '<a href="'. $image['url'] .'">';
+                                    $content .= '<img src="'. $image['sizes']['large'] .'" alt="'. $image['alt'] .'" />';
+                                    $content .= '</a>';
+
+                                    if ( function_exists('slb_activate') ){
+                                        $content = slb_activate($content);
+                                        }
+
+                                    echo $content;?>
+                            </div>
                         <?php endforeach; ?>
                     </section>
                 <?php endif; ?>
