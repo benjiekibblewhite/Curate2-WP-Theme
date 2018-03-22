@@ -21,27 +21,27 @@
 
                 if( $images ): ?>
                     <section class="portfolio-single--gallery">
-                        <?php foreach( $images as $image ): ?>
-                            <div class="portfolio-single--gallery__image">
-                               <?php
-                                    $content .= '<a href="'. $image['url'] .'">';
-                                    $content .= '<img src="'. $image['sizes']['large'] .'" alt="'. $image['alt'] .'" />';
-                                    $content .= '</a>';
+                        <?php
+                        $content = '';
 
-                                    if ( function_exists('slb_activate') ){
-                                        $content = slb_activate($content);
-                                        }
+                        foreach( $images as $image ):
+                            $content .= '<div class="portfolio-single--gallery__image">';
+                            $content .= '<a class="gallery_image" href="'. $image['url'] .'">';
+                            $content .= '<img src="'. $image['sizes']['large'] .'" alt="'. $image['alt'] .'" />';
+                            $content .= '</a>';
+                            $content .= '</div>';
+                        endforeach;
+                        // enable Simple Lightbox plugin
+                        if ( function_exists('slb_activate') ){
+                            $content = slb_activate($content);
+                            }
 
-                                    echo $content;?>
-                            </div>
-                        <?php endforeach; ?>
+                        echo $content;?>
                     </section>
                 <?php endif; ?>
 			<?php the_tags( __( 'Tags: ', 'html5blank' ), ', ', '<br>'); // Separated by commas with a line break at the end ?>
 
 			<?php edit_post_link(); // Always handy to have Edit Post Links available ?>
-
-			<?php comments_template(); ?>
 
 		</article>
 		<!-- /article -->
