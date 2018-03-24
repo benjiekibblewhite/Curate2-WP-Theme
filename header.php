@@ -59,7 +59,7 @@
 			<!-- /logo -->
 			<!-- buttons -->
 			<nav class="header-nav" role="navigation">
-				<span class="header-contact_phone">
+				<span class="header-button header-contact_phone">
 					<?php
 								if ( get_theme_mod( 'your_phone_number')) : ?>
 						<a href="tel:<?php echo get_theme_mod( 'your_phone_number'); ?>">
@@ -67,7 +67,7 @@
 								endif ?>
 						</a>
 				</span>
-				<span class="header-contact_email">
+				<span class="header-button header-contact_email">
 					<?php
 								if ( get_theme_mod( 'your_email_address')) : ?>
 						<a href="mailto:<?php echo get_theme_mod( 'your_email_address'); ?>">
@@ -75,9 +75,11 @@
 								endif ?>
 						</a>
 				</span>
-				<button id="nav-button">MENU
-					<i class="fas fa-bars"></i>
-				</button>
+				<div class="header-button nav-button_container">
+					<button id="nav-button">MENU
+						<i class="fas fa-bars"></i>
+					</button>
+				</div>
 				<div class="nav-sidebar">
 					<button id="close-nav-button">
 						<i class="fas fa-times"></i>
