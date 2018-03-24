@@ -24,8 +24,8 @@ window.onload = function() {
 	}
 
 	//event listeners
-	navButton.addEventListener('click touchstart', toggleNav);
-	closeNavButton.addEventListener('click touchstart', toggleNav);
+	navButton.addEventListener('click', toggleNav);
+	closeNavButton.addEventListener('click', toggleNav);
 
 };
 
