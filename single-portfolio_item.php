@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
     <section class="hero">
-		<h1 class="heading heading-secondary">
+		<h1 class="heading heading-main">
             <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
             <?php the_title(); ?>
             </a>
@@ -39,7 +39,6 @@
                         echo $content;?>
                     </section>
                 <?php endif; ?>
-			<?php the_tags( __( 'Tags: ', 'html5blank' ), ', ', '<br>'); // Separated by commas with a line break at the end ?>
 
 			<?php edit_post_link(); // Always handy to have Edit Post Links available ?>
 

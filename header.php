@@ -12,7 +12,7 @@
 	<link href="//www.google-analytics.com" rel="dns-prefetch">
 	<link href="<?php echo get_template_directory_uri(); ?>/img/icons/favicon.ico" rel="shortcut icon">
 	<link href="<?php echo get_template_directory_uri(); ?>/img/icons/touch.png" rel="apple-touch-icon-precomposed">
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:100,300,400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Poppins:300,400" rel="stylesheet">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="<?php bloginfo('description'); ?>">
@@ -48,12 +48,13 @@
 
 						<img src="<?php echo get_theme_mod( 'your_theme_logo' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
 
-						<?php // add a fallback if the logo doesn't exist
-								else : ?>
-						<!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
-						<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="Logo" class="logo-img">
-
-						<?php endif ?>
+						<?php // default .svg logo
+							else : 
+								$logo = get_template_directory();
+								$logo .= "/img/Curate2_Logo.svg";
+								include($logo);
+							endif
+						?>
 				</a>
 			</div>
 			<!-- /logo -->

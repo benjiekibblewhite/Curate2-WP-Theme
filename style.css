@@ -39,6 +39,7 @@ body {
 	color: #444;
 	--border-color: rgba(119,119,136,0.5);
 	--heading-color: #778;
+	--hover-color: rgb(219, 186, 18);
 }
 
 /* clear */
@@ -91,7 +92,7 @@ input:focus {
 }
 
 .heading {
-	font-family: "Raleway", sans-serif;
+	font-family: "Poppins", sans-serif;
 	font-weight: 500;
 	color: #778;
 }
@@ -107,7 +108,7 @@ input:focus {
 }
 
 .heading-tagline {
-	font-size: 36px;
+	font-size: 40px;
 	margin: 0 0 16px
 }
 
@@ -270,8 +271,8 @@ main {
 \*------------------------------------*/
 
 .header {
-	font-size: 1.25rem;
-	font-family: "Raleway", sans-serif;
+	font-size: 1.1rem;
+	font-family: "Poppins", sans-serif;
 	font-weight: 300;
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -299,6 +300,16 @@ main {
 	-webkit-box-flex: 3;
 	-ms-flex: 3 1 auto;
 	flex: 3 1 auto;
+}
+
+.header-logo svg {
+	fill: var(--heading-color);
+	width: 200px;
+	height: auto;
+}
+
+.header-logo svg:hover {
+	fill: var(--hover-color);
 }
 
 .header-nav {
@@ -402,7 +413,7 @@ main {
 .header-nav .page_item a:hover,
 #nav-button:hover,
 #close-nav-button:hover {
-	color: rgb(219, 186, 18);
+	color: var(--hover-color);
 }
 
 
@@ -505,9 +516,9 @@ main {
 }
 
 .seemore {
-	font-style: italic;
-	font-weight: 400;
-	font-family: "Raleway", sans-serif;
+	text-transform: uppercase;
+	font-weight: 300;
+	font-family: "Poppins", sans-serif;
 	color: rgb(150,150,150)
 }
 
