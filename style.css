@@ -134,6 +134,16 @@ input:focus {
     STRUCTURE
 \*------------------------------------*/
 
+/*layout utilities*/
+
+.large-margin-bottom {
+	margin-bottom: 160px;
+}
+
+.medium-margin-bottom {
+	margin-bottom: 80px;
+}
+
 /* wrapper */
 
 .wrapper {
@@ -237,7 +247,7 @@ main {
 		-ms-grid-column: 1;
 		-ms-grid-column-span: 4;
 		grid-area: hero;
-		margin-bottom: 24px;
+		margin-bottom: 40px;
 		text-align: center;
 	}
 
@@ -386,7 +396,8 @@ main {
 	top: 0;
 	right: 0;
 	height: 100vh;
-	width: 320px;
+	width: 440px;
+	max-width: 100%;
 	background-color: rgb(20, 20, 20);
 	padding: 80px 0;
 	transition: transform 0.1s ease-out;
@@ -399,11 +410,11 @@ main {
 	transform: translateX(0);
 }
 
-.header-nav .menu ul {
+.header-nav .nav-sidebar ul {
 	list-style: none;
 }
 
-.header-nav .page_item a {
+.header-nav .menu-item a {
 	font-size: 36px;
 	font-weight: 400;
 	color: white;
@@ -481,15 +492,15 @@ main {
 }
 
 @media screen and (max-width: 500px) {
-	.main-home_inset_left,
-	.main-home_inset_right {
-		padding-left: 0;
-		padding-right: 0;
+	.main-home_inset_to_left, 
+	.main-home_inset_to_right {
+		padding: 16px;
 	}
 
 	.main-home_inset img {
 		margin: 0;
 	}
+	
 }
 
 .company-info {

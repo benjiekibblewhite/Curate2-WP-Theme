@@ -8,7 +8,7 @@
 	<main role="main" class="main-home">
 		<!-- front page intro section -->
 		<section class="main-home_intro">
-		    <div class="row">
+		    <div class="row large-margin-bottom">
                 <div class="greeting main-home_one-col"><p class="text"><?php the_field( 'intro_text' ); ?></p></div>
                 <div class="headshot main-home_one-col">
                     <?php if ( get_field( 'headshot') ) { ?>
@@ -16,7 +16,7 @@
                     <?php } ?>
                 </div>
             </div>
-            <div class="row">
+            <div class="row large-margin-bottom">
                 <div class="company-info">
                     <h1 class="company-info_name heading heading-main"><?php the_field( 'company_name' ); ?></h1>
                     <h3 class="company-info_tagline heading heading-tagline"><?php the_field( 'tag_line' ); ?></h3>
@@ -28,7 +28,7 @@
                     $images = get_field('front_page_gallery');
 
                     if( $images ): ?>
-                        <ul class="front-page-gallery row">
+                        <ul class="front-page-gallery row large-margin-bottom">
                             <?php foreach( $images as $image ): ?>
                                 <li class="main-home_one-col">
                                          <img src="<?php echo $image['sizes']['large']; ?>" alt="<?php echo $image['alt']; ?>" />
